@@ -58,10 +58,11 @@
             background-color: #f0fff0;
         }
         .counters {
-            background-color: #fff0e6;
+            /* background-color: #fff0e6; */
             font-weight: bold;
-            width: 40%;
+            width: 100%;
             text-align: center;
+            justify-content: center;
         }
         .highlight {
             position: relative;
@@ -159,6 +160,118 @@ tbody{
             justify-content: center;
             text-align: center;
             
+        }
+        /* متجاوب مع جميع الأنظمة */
+        @media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .content {
+        padding: 10px;
+    }
+    
+    #inputText {
+        height: 80px;
+    }
+    
+    .counters {
+        width: 100%;
+    }
+    
+    #table1 {
+        width: 100%;
+        direction: rtl;
+    }
+    
+    .span1, .span2 {
+        font-size: large;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    
+    #inputText {
+        height: 60px;
+    }
+    
+    .span1, .span2 {
+        font-size: medium;
+    }
+}
+
+/* تحسينات عامة للتجاوب */
+body {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#inputText, #output {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+table {
+    overflow-x: auto;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* تحسين التجاوب للكانفاس */
+#matrix-canvas {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* last table counters */
+#table-7 {
+            width: 100%;
+            max-width: 600px;
+            /* background-color: #ffffff; */
+            color: #333333;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            direction: ltr;
+
+        }
+        #table-7 th, #table-7 td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        #table-7 thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #table-7 thead th {
+            font-weight: bold;
+        }
+        #table-7 tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        #table-7 tbody tr:hover {
+            background-color: #f0fff0;
+        }
+        @media (max-width: 600px) {
+            #table-7 {
+                font-size: 14px;
+            }
+            #table-7 th, #table-7 td {
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -325,6 +438,13 @@ tbody{
             ).join('');
         }
 
+
+
+
+
+
+        
+
         function analyzeText() {
             const inputText = document.getElementById('inputText').value;
             const outputDiv = document.getElementById('output');
@@ -349,16 +469,92 @@ tbody{
             const specificCharCounts = countSpecificChars(inputText);
 
             outputDiv.innerHTML += `<div class="counters">
-                إحصائيات النص الكامل:<br>
-                عدد الكلمات: ${wordCount}<br>
-                عدد جميع الحروف: ${allCharCount}<br>
-                عدد الحروف (أ، ل، م، ر): ${specificCharCounts.total}<br>
-                عدد حرف (أ): ${specificCharCounts.alif}<br>
-                عدد حرف (ل): ${specificCharCounts.lam}<br>
-                عدد حرف (م): ${specificCharCounts.meem}<br>
-                عدد حرف (ر): ${specificCharCounts.raa}
+           <table id="table-7">
+        <thead>
+            <tr>
+                <th colspan="2">فرقان الهدى عروج فكري</th>
+            </tr>
+            <tr>
+                <th colspan="2">إحصائيات النص القرآني كاملا</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th id="tasnimsaid">${wordCount}</th>
+                <th>عدد الكلمات</th>
+            </tr>
+            <tr>
+                <th id="tasnimsaid1">${allCharCount}</th>
+                <th>عدد جميع الحروف</th>
+            </tr>
+            <tr>
+                <th id="tasnimsaid2">${specificCharCounts.total}</th>
+                <th>عدد الحروف (أ، ل ، م ، ر )</th>
+            </tr>
+            <tr>
+                <th id="tasnimsaid3">${specificCharCounts.alif}</th>
+                <th>عدد حرف (أ)</th>
+            </tr>
+            <tr>
+                <th id="tasnimsaid4">${specificCharCounts.lam}</th>
+                <th>عدد حرف (ل)</th>
+            </tr>
+            <tr>
+                <th id="tasnimsaid5">${specificCharCounts.meem}</th>
+                <th>عدد حرف (م)</th>
+            </tr>
+            <tr>
+                <th id="tasnimsaid6">${specificCharCounts.raa}</th>
+                <th>عدد حرف (ر)</th>
+            </tr>
+        </tbody>
+    </table>
+
             </div>`;
         }
+
+    //     outputDiv.innerHTML +=`<div class="counters">
+    // <table id="table-7">
+    //     <thead>
+    //         <tr>
+    //             <th colspan="2">فرقان الهدى عروج فكري</th>
+    //         </tr>
+    //         <tr>
+    //             <th colspan="2">إحصائيات النص القرآني كاملا</th>
+    //         </tr>
+    //     </thead>
+    //     <tbody>
+    //         <tr>
+    //             <th id="tasnimsaid">${wordCount}</th>
+    //             <th>عدد الكلمات</th>
+    //         </tr>
+    //         <tr>
+    //             <th id="tasnimsaid1">${allCharCount}</th>
+    //             <th>عدد جميع الحروف</th>
+    //         </tr>
+    //         <tr>
+    //             <th id="tasnimsaid2">${specificCharCounts.total}</th>
+    //             <th>عدد الحروف (أ، ل ، م ، ر )</th>
+    //         </tr>
+    //         <tr>
+    //             <th id="tasnimsaid3">${specificCharCounts.alif}</th>
+    //             <th>عدد حرف (أ)</th>
+    //         </tr>
+    //         <tr>
+    //             <th id="tasnimsaid4">${specificCharCounts.lam}</th>
+    //             <th>عدد حرف (ل)</th>
+    //         </tr>
+    //         <tr>
+    //             <th id="tasnimsaid5">${specificCharCounts.meem}</th>
+    //             <th>عدد حرف (م)</th>
+    //         </tr>
+    //         <tr>
+    //             <th id="tasnimsaid6">${specificCharCounts.raa}</th>
+    //             <th>عدد حرف (ر)</th>
+    //         </tr>
+    //     </tbody>
+    // </table>
+    // </div>`
 
         function analyzeLine(line) {
             const words = line.split(' ');
